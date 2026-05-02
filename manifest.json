@@ -1,0 +1,10 @@
+{
+  "name": "Velocis Typing",
+  "short_name": "Velocis Typing",
+  "description": "Learn touch typing and test your speed",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0a0a1a",
+  "theme_color": "#00d4ff",
+  "icons": []
+}
