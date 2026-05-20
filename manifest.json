@@ -1,0 +1,28 @@
+{
+  "name": "Velocis Typing",
+  "short_name": "Velocis",
+  "description": "Master your typing speed with professional touch typing lessons, real-time speed tests, and deep performance analytics.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0a0a1a",
+  "theme_color": "#00d4ff",
+  "categories": ["education", "productivity", "utilities"],
+  "icons": [
+    {
+      "src": "./icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [],
+  "prefer_related_applications": false
+}

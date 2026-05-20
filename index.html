@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Velocis Typing — Pro Performance & Speed Test</title>
+  <meta name="description" content="Elevate your typing speed with Velocis Typing. Professional touch typing lessons, real-time speed tests, and deep performance analytics.">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0a0a1a">
+  <!-- PWA: Apple/iOS Support -->
+  <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Velocis Typing">
+  <!-- SEO & Social Meta Tags -->
+  <meta property="og:title" content="Velocis Typing — Elite Performance">
+  <meta property="og:description" content="Master your keystrokes with Velocis Typing. The most advanced typing speed test and analytics platform.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="keywords" content="typing test, speed test, touch typing, wpm, typing analytics, velocis typing">
+  <meta name="author" content="Velocis Typing">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Import 20+ Monospace Fonts for Professional Typing -->
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=JetBrains+Mono:wght@400;700&family=Roboto+Mono:wght@400;700&family=Source+Code+Pro:wght@400;700&family=Ubuntu+Mono:wght@400;700&family=Inconsolata:wght@400;700&family=Space+Mono:wght@400;700&family=Courier+Prime:wght@400;700&family=IBM+Plex+Mono:wght@400;700&family=VT323&family=Share+Tech+Mono&family=Anonymous+Pro:wght@400;700&family=Cousine:wght@400;700&family=Cutive+Mono&family=PT+Mono&family=Nova+Mono&family=Syne+Mono&family=Oxygen+Mono&family=Overpass+Mono:wght@400;700&family=Red+Hat+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=2">
+</head>
+<body>
+  <!-- Animated Splash Screen -->
+  <div id="splash-screen" class="splash-screen">
+    <div class="splash-content">
+      <div class="splash-logo"><img src="./icons/icon-192x192.png" alt="Velocis Logo" style="width:80px;height:80px;object-fit:contain;"></div>
+      <h1 class="splash-title">Velocis <span class="nav-pro">Typing</span></h1>
+      <div class="splash-loader">
+        <div class="loader-bar"></div>
+      </div>
+      <p class="splash-text">Initializing professional typing environment...</p>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav id="main-nav">
+    <div class="nav-brand">
+      <div class="nav-logo" style="display:flex;align-items:center;"><img src="./icons/icon-192x192.png" alt="Velocis Logo" style="width:32px;height:32px;object-fit:contain;"></div>
+      <span class="nav-title">Velocis <span class="nav-pro">Typing</span></span>
+    </div>
+    <div class="nav-links">
+      <button class="nav-link active" data-page="home" id="nav-home">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <span>Home</span>
+      </button>
+      <button class="nav-link" data-page="test" id="nav-test">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <span>Speed Test</span>
+      </button>
+      <button class="nav-link" data-page="lessons" id="nav-lessons">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        <span>Lessons</span>
+      </button>
+      <button class="nav-link" data-page="practice" id="nav-practice">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        <span>Practice</span>
+      </button>
+      <button class="nav-link" data-page="stats" id="nav-stats">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        <span>Stats</span>
+      </button>
+      <button class="nav-link" data-page="leaderboard" id="nav-leaderboard">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <span>Leaderboard</span>
+      </button>
+      <button class="nav-link hidden" data-page="insights" id="nav-insights">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>
+        <span>Insights</span>
+      </button>
+      <button class="nav-link" data-page="games" id="nav-games">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h4"/><path d="M8 10v4"/><circle cx="15" cy="10" r="1"/><circle cx="18" cy="13" r="1"/></svg>
+        <span>Games</span>
+      </button>
+      <button class="nav-link" data-page="settings" id="nav-settings">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        <span>Settings</span>
+      </button>
+    </div>
+    <div class="nav-right">
+
+      <button class="theme-toggle" id="theme-toggle" title="Toggle theme">
+        <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <!-- Auth buttons -->
+      <button class="btn btn-primary btn-sm" id="nav-login-btn">Login</button>
+      <div class="user-menu hidden" id="user-menu">
+        <button class="user-avatar" id="user-avatar-btn">U</button>
+        <div class="user-dropdown hidden" id="user-dropdown">
+          <div class="dropdown-header"><span id="dropdown-name">User</span><span id="dropdown-email" class="dropdown-email">user@email.com</span></div>
+          <hr>
+          <button class="dropdown-item nav-link" data-page="profile" id="nav-profile">👤 Profile</button>
+          <button class="dropdown-item" id="nav-logout">🚪 Logout</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Auth Modal -->
+  <div class="modal-overlay hidden" id="auth-modal">
+    <div class="modal-content auth-modal-content">
+      <button class="modal-close" id="auth-modal-close">&times;</button>
+      <div class="auth-tabs">
+        <button class="auth-tab active" data-tab="login">Login</button>
+        <button class="auth-tab" data-tab="register">Sign Up</button>
+      </div>
+      <div class="auth-error hidden" id="auth-error"></div>
+      <!-- Login Form -->
+      <form class="auth-form" id="login-form">
+        <div class="form-group"><label>Username or Email</label><input type="text" id="login-username" required placeholder="Enter username or email"></div>
+        <div class="form-group">
+          <label>Password</label>
+          <div class="password-wrapper">
+            <input type="password" id="login-password" required placeholder="Enter password">
+            <button type="button" class="password-toggle" tabindex="-1">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+            </button>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-full">Login</button>
+      </form>
+
+      <!-- Register Form -->
+      <form class="auth-form hidden" id="register-form">
+        <div class="form-group"><label>Display Name</label><input type="text" id="reg-displayname" required placeholder="Your name"></div>
+        <div class="form-group">
+          <label>Username</label>
+          <input type="text" id="reg-username" required placeholder="Choose a username">
+          <div id="username-status" class="username-status hidden"></div>
+        </div>
+        <div class="form-group"><label>Email</label><input type="email" id="reg-email" required placeholder="your@email.com"></div>
+        <div class="form-group">
+          <label>Password</label>
+          <div class="password-wrapper">
+            <input type="password" id="reg-password" required minlength="6" placeholder="Min 6 characters">
+            <button type="button" class="password-toggle" tabindex="-1">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+            </button>
+          </div>
+
+        </div>
+        <button type="submit" class="btn btn-primary btn-full">Create Account</button>
+      </form>
+
+      <!-- Social Login -->
+      <div class="auth-divider">
+        <span>Or continue with</span>
+      </div>
+      <div class="social-auth">
+        <button class="social-btn google" id="google-login">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.66l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+          </svg>
+          Google
+        </button>
+        <button class="social-btn github" id="github-login">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 1.27a11 11 0 00-3.48 21.46c.55.09.73-.24.73-.53v-1.84c-3.03.66-3.67-1.46-3.67-1.46-.5-1.26-1.21-1.6-1.21-1.6-1-.68.07-.66.07-.66 1.1.08 1.68 1.13 1.68 1.13.98 1.68 2.58 1.2 3.21.92.1-.71.39-1.2.7-1.48-2.42-.27-4.97-1.21-4.97-5.39 0-1.19.43-2.16 1.13-2.93-.11-.28-.49-1.39.11-2.89 0 0 .91-.29 3 1.11a10.45 10.45 0 015.5 0c2.09-1.4 3-1.11 3-1.11.6 1.5.22 2.61.11 2.89.71.77 1.13 1.74 1.13 2.93 0 4.19-2.55 5.11-4.98 5.38.39.33.74.99.74 2v2.96c0 .3.18.63.74.52A11 11 0 0012 1.27z"/>
+          </svg>
+          GitHub
+        </button>
+        <button class="social-btn facebook" id="facebook-login">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M24 12.07C24 5.41 18.63 0 12 0S0 5.41 0 12.07c0 6.03 4.42 11.02 10.12 11.91v-8.41H7.08v-3.5h3.04V9.41c0-3.01 1.79-4.67 4.53-4.67 1.31 0 2.68.23 2.68.23v2.95h-1.5c-1.49 0-1.96.93-1.96 1.88v2.26h3.33l-.53 3.5h-2.8v8.41C19.58 23.09 24 18.1 24 12.07z"/>
+          </svg>
+          Facebook
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <main id="app-main">
+    <!-- HOME PAGE -->
+    <section class="page active" id="page-home">
+      <div class="home-hero">
+        <h1 class="hero-title">Master Your <span class="gradient-text typewriter-text" id="hero-typewriter">Typing Skills</span><span class="typewriter-cursor">|</span></h1>
+        <p class="hero-subtitle">Learn touch typing, test your speed, and track your progress with our professional typing trainer.</p>
+        <div class="hero-actions">
+          <button class="btn btn-primary btn-lg" id="hero-start-test">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            Start Speed Test
+          </button>
+          <button class="btn btn-secondary btn-lg" id="hero-start-lesson">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            Begin Lessons
+          </button>
+        </div>
+      </div>
+      <div class="home-stats-grid">
+        <div class="stat-card" id="home-stat-wpm">
+          <div class="stat-icon cyan">⚡</div>
+          <div class="stat-info">
+            <div class="stat-value" id="home-best-wpm">0</div>
+            <div class="stat-label">Best WPM</div>
+          </div>
+        </div>
+        <div class="stat-card" id="home-stat-accuracy">
+          <div class="stat-icon green">🎯</div>
+          <div class="stat-info">
+            <div class="stat-value" id="home-avg-accuracy">0%</div>
+            <div class="stat-label">Avg Accuracy</div>
+          </div>
+        </div>
+        <div class="stat-card" id="home-stat-tests">
+          <div class="stat-icon purple">📝</div>
+          <div class="stat-info">
+            <div class="stat-value" id="home-total-tests">0</div>
+            <div class="stat-label">Tests Taken</div>
+          </div>
+        </div>
+        <div class="stat-card" id="home-stat-lessons">
+          <div class="stat-icon amber">🏆</div>
+          <div class="stat-info">
+            <div class="stat-value" id="home-lessons-done">0</div>
+            <div class="stat-label">Lessons Done</div>
+          </div>
+        </div>
+      </div>
+      <div class="home-features">
+        <h2 class="section-title">Features</h2>
+        <div class="features-grid">
+          <div class="feature-card nav-link" data-page="test" style="cursor:pointer">
+            <div class="feature-icon">🚀</div>
+            <h3>Speed Test</h3>
+            <p>Test your typing speed with configurable durations and real-time WPM tracking.</p>
+          </div>
+          <div class="feature-card nav-link" data-page="lessons" style="cursor:pointer">
+            <div class="feature-icon">📚</div>
+            <h3>Progressive Lessons</h3>
+            <p>Learn touch typing from scratch with step-by-step lessons for every key.</p>
+          </div>
+          <div class="feature-card nav-link" data-page="practice" style="cursor:pointer">
+            <div class="feature-icon">🎮</div>
+            <h3>Practice Mode</h3>
+            <p>Practice with quotes, code snippets, or your own custom text.</p>
+          </div>
+          <div class="feature-card nav-link" data-page="stats" style="cursor:pointer">
+            <div class="feature-icon">📊</div>
+            <h3>Detailed Analytics</h3>
+            <p>Track your progress with charts, history, and performance insights.</p>
+          </div>
+          <div class="feature-card nav-link" data-page="games" style="cursor:pointer">
+            <div class="feature-icon">🕹️</div>
+            <h3>Typing Games</h3>
+            <p>Improve your speed while having fun with interactive typing games.</p>
+          </div>
+          <div class="feature-card nav-link" data-page="settings" style="cursor:pointer">
+            <div class="feature-icon">⚙️</div>
+            <h3>Custom Settings</h3>
+            <p>Personalize your experience with themes, sounds, and layouts.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TYPING TEST PAGE -->
+    <section class="page" id="page-test">
+      <div class="test-header">
+        <div style="display:flex;align-items:center;gap:16px;">
+          <button class="btn btn-sm btn-ghost nav-link" data-page="home">← Back</button>
+          <h2 class="page-title" style="margin:0;">Speed Test</h2>
+        </div>
+        <div class="test-options">
+          <div class="option-group">
+            <label>Mode</label>
+            <div class="btn-group" id="mode-group">
+              <button class="btn btn-chip active" data-mode="time">Time</button>
+              <button class="btn btn-chip" data-mode="words">Words</button>
+            </div>
+          </div>
+          <div class="option-group" id="duration-option-group">
+            <label>Duration</label>
+            <div class="btn-group" id="duration-group">
+              <button class="btn btn-chip" data-duration="15">15s</button>
+              <button class="btn btn-chip active" data-duration="30">30s</button>
+              <button class="btn btn-chip" data-duration="60">60s</button>
+              <button class="btn btn-chip" data-duration="120">2m</button>
+            </div>
+          </div>
+          <div class="option-group hidden" id="words-option-group">
+            <label>Words</label>
+            <div class="btn-group" id="words-group">
+              <button class="btn btn-chip" data-words="10">10</button>
+              <button class="btn btn-chip active" data-words="25">25</button>
+              <button class="btn btn-chip" data-words="50">50</button>
+              <button class="btn btn-chip" data-words="100">100</button>
+            </div>
+          </div>
+          <div class="option-group">
+            <label>Difficulty</label>
+            <div class="btn-group" id="difficulty-group">
+              <button class="btn btn-chip active" data-difficulty="easy">Easy</button>
+              <button class="btn btn-chip" data-difficulty="medium">Medium</button>
+              <button class="btn btn-chip" data-difficulty="hard">Hard</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="test-stats-bar">
+        <div class="live-stat">
+          <span class="live-stat-value" id="live-wpm">0</span>
+          <span class="live-stat-label">WPM</span>
+        </div>
+        <div class="live-stat">
+          <span class="live-stat-value" id="live-accuracy">100</span>
+          <span class="live-stat-label">Accuracy %</span>
+        </div>
+        <div class="live-stat timer">
+          <span class="live-stat-value" id="live-timer">30</span>
+          <span class="live-stat-label">Seconds</span>
+        </div>
+        <div class="live-stat">
+          <span class="live-stat-value" id="live-errors">0</span>
+          <span class="live-stat-label">Errors</span>
+        </div>
+      </div>
+      <div class="typing-area" id="typing-area">
+        <div class="text-display-wrapper">
+          <div class="text-display" id="text-display"></div>
+        </div>
+        <input type="text" id="typing-input" class="typing-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" autofocus>
+        <div class="typing-caret" id="typing-caret"></div>
+      </div>
+      <div class="test-actions">
+        <button class="btn btn-primary" id="restart-test">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+          Restart
+        </button>
+        <p class="hint-text">Click on the text area and start typing • <kbd>Tab</kbd>+<kbd>Enter</kbd> to restart</p>
+      </div>
+      <!-- Virtual Keyboard -->
+      <div class="keyboard-container" id="keyboard-container">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; padding:0 8px;">
+          <span class="hint-text" style="margin:0;">Interactive keyboard helper</span>
+          <button class="btn btn-chip" id="toggle-test-heatmap" style="padding:4px 12px; font-size:11px; height:24px; display:inline-flex; align-items:center; gap:4px;">🔥 Show Heatmap</button>
+        </div>
+        <div class="keyboard" id="virtual-keyboard"></div>
+      </div>
+    </section>
+
+    <!-- LESSONS PAGE -->
+    <section class="page" id="page-lessons">
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:8px;">
+        <button class="btn btn-sm btn-ghost nav-link" data-page="home">← Back</button>
+        <h2 class="page-title" style="margin:0;">Typing Lessons</h2>
+      </div>
+      <p class="page-desc">Learn touch typing step by step. Complete each lesson to unlock the next.</p>
+      <div class="lessons-grid" id="lessons-grid"></div>
+      <!-- Active Lesson View -->
+      <div class="lesson-active hidden" id="lesson-active">
+        <div class="lesson-active-header">
+          <button class="btn btn-ghost" id="lesson-back">← Back to Lessons</button>
+          <h3 id="lesson-active-title">Lesson Title</h3>
+          <p id="lesson-active-desc">Description</p>
+        </div>
+        <div class="lesson-focus-keys" id="lesson-focus-keys"></div>
+        <div class="test-stats-bar">
+          <div class="live-stat"><span class="live-stat-value" id="lesson-wpm">0</span><span class="live-stat-label">WPM</span></div>
+          <div class="live-stat"><span class="live-stat-value" id="lesson-accuracy">100</span><span class="live-stat-label">Accuracy %</span></div>
+          <div class="live-stat"><span class="live-stat-value" id="lesson-progress">0</span><span class="live-stat-label">Progress %</span></div>
+        </div>
+        <div class="typing-area" id="lesson-typing-area">
+          <div class="text-display-wrapper">
+            <div class="text-display" id="lesson-text-display"></div>
+          </div>
+          <input type="text" id="lesson-typing-input" class="typing-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+        </div>
+        <div class="keyboard-container">
+          <div class="keyboard" id="lesson-keyboard"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GAMES PAGE -->
+    <section class="page" id="page-games">
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:8px;">
+        <button class="btn btn-sm btn-ghost nav-link" data-page="home">← Back</button>
+        <h2 class="page-title" style="margin:0;">Typing Games</h2>
+      </div>
+      <p class="page-desc">Improve your speed and accuracy while having fun!</p>
+      
+      <div class="games-selection" id="games-selection">
+        <div class="game-card" data-game="cascade">
+          <div class="game-icon">🌊</div>
+          <h3>Word Cascade</h3>
+          <p>Stop the words from reaching the bottom by typing them quickly!</p>
+          <button class="btn btn-primary btn-sm">Play Now</button>
+        </div>
+        <div class="game-card" data-game="bubble">
+          <div class="game-icon">🎈</div>
+          <h3>Bubble Pop</h3>
+          <p>Type the letters inside bubbles before they float away to the top!</p>
+          <button class="btn btn-primary btn-sm">Play Now</button>
+        </div>
+        <div class="game-card" data-game="dash">
+          <div class="game-icon">⚡</div>
+          <h3>Word Dash</h3>
+          <p>Rapid fire! Type the word on the screen before the time runs out.</p>
+          <button class="btn btn-primary btn-sm">Play Now</button>
+        </div>
+        <div class="game-card" data-game="code">
+          <div class="game-icon">🔐</div>
+          <h3>Code Breaker</h3>
+          <p>Unscramble the letters to find the hidden word. Test your mind!</p>
+          <button class="btn btn-primary btn-sm">Play Now</button>
+        </div>
+      </div>
+
+      <!-- Word Cascade Game View -->
+      <div class="game-active hidden" id="game-cascade-active">
+        <div class="game-header">
+          <button class="btn btn-ghost btn-sm" id="game-back">← Quit Game</button>
+          <div class="game-title">Word Cascade</div>
+          <div class="game-stats-row">
+            <div class="game-stat-item">Score: <span id="game-score">0</span></div>
+            <div class="game-stat-item">Level: <span id="game-level">1</span></div>
+            <div class="game-stat-item">Lives: <span id="game-lives">❤️❤️❤️</span></div>
+          </div>
+        </div>
+        
+        <div class="game-canvas-container">
+          <div id="game-canvas" class="game-canvas">
+            <!-- Falling words will appear here -->
+            <div class="game-start-overlay" id="game-start-overlay">
+              <h2>Word Cascade</h2>
+              <p>Type the words as they fall. Don't let them hit the bottom!</p>
+              <button class="btn btn-primary btn-lg" id="start-cascade-btn">Start Game</button>
+            </div>
+          </div>
+          <div class="game-input-wrapper">
+            <input type="text" id="game-input" class="game-input" placeholder="Type words here..." autocomplete="off" spellcheck="false">
+          </div>
+        </div>
+      </div>
+
+      <!-- Bubble Pop Game View -->
+      <div class="game-active hidden" id="game-bubble-active">
+        <div class="game-header">
+          <button class="btn btn-ghost btn-sm" id="game-bubble-back">← Quit Game</button>
+          <div class="game-title">Bubble Pop</div>
+          <div class="game-stats-row">
+            <div class="game-stat-item">Score: <span id="game-bubble-score">0</span></div>
+            <div class="game-stat-item">Level: <span id="game-bubble-level">1</span></div>
+            <div class="game-stat-item">Lives: <span id="game-bubble-lives">❤️❤️❤️</span></div>
+          </div>
+        </div>
+        
+        <div class="game-canvas-container">
+          <div id="game-bubble-canvas" class="game-canvas game-bubble-bg">
+            <!-- Floating bubbles will appear here -->
+            <div class="game-start-overlay" id="game-bubble-start-overlay">
+              <h2>Bubble Pop</h2>
+              <p>Type the letters inside the bubbles before they reach the top!</p>
+              <button class="btn btn-primary btn-lg" id="start-bubble-btn">Start Game</button>
+            </div>
+          </div>
+          <!-- Bubble pop doesn't necessarily need a visible input box, but it's good to have one for mobile -->
+          <div class="game-input-wrapper" style="opacity:0; height:0;">
+            <input type="text" id="game-bubble-input" class="game-input" autocomplete="off" spellcheck="false">
+          </div>
+        </div>
+      </div>
+
+      <!-- Word Dash Game View -->
+      <div class="game-active hidden" id="game-dash-active">
+        <div class="game-header">
+          <button class="btn btn-ghost btn-sm" id="game-dash-back">← Quit Game</button>
+          <div class="game-title">Word Dash</div>
+          <div class="game-stats-row">
+            <div class="game-stat-item">Score: <span id="game-dash-score">0</span></div>
+            <div class="game-stat-item">Level: <span id="game-dash-level">1</span></div>
+            <div class="game-stat-item">Lives: <span id="game-dash-lives">❤️❤️❤️</span></div>
+          </div>
+        </div>
+        <div class="game-canvas-container">
+          <div id="game-dash-canvas" class="game-canvas" style="display:flex; flex-direction:column; justify-content:center; align-items:center; background: radial-gradient(circle at center, var(--bg-card), var(--bg-primary));">
+            <div class="dash-word-display" id="dash-word-display" style="font-size:64px; font-weight:800; font-family:var(--font-mono); margin-bottom:30px; text-shadow:0 0 20px rgba(255,255,255,0.1);">READY</div>
+            <div class="dash-timer-bar-container" style="width:80%; max-width:400px; height:8px; background:var(--bg-secondary); border-radius:4px; overflow:hidden; box-shadow:inset 0 2px 4px rgba(0,0,0,0.5);">
+              <div class="dash-timer-bar" id="dash-timer-bar" style="height:100%; width:100%; background:var(--accent); transition:width 0.1s linear, background-color 0.3s;"></div>
+            </div>
+            <div class="game-start-overlay" id="game-dash-start-overlay">
+              <h2>Word Dash</h2>
+              <p>Type the central word before the timer bar empties!</p>
+              <button class="btn btn-primary btn-lg" id="start-dash-btn">Start Game</button>
+            </div>
+          </div>
+          <div class="game-input-wrapper"><input type="text" id="game-dash-input" class="game-input" placeholder="Type the word here..." autocomplete="off" spellcheck="false"></div>
+        </div>
+      </div>
+
+      <!-- Code Breaker Game View -->
+      <div class="game-active hidden" id="game-code-active">
+        <div class="game-header">
+          <button class="btn btn-ghost btn-sm" id="game-code-back">← Quit Game</button>
+          <div class="game-title">Code Breaker</div>
+          <div class="game-stats-row">
+            <div class="game-stat-item">Score: <span id="game-code-score">0</span></div>
+            <div class="game-stat-item">Solved: <span id="game-code-level">0</span></div>
+            <div class="game-stat-item">Lives: <span id="game-code-lives">❤️❤️❤️</span></div>
+          </div>
+        </div>
+        <div class="game-canvas-container">
+          <div id="game-code-canvas" class="game-canvas" style="display:flex; flex-direction:column; justify-content:center; align-items:center; background: radial-gradient(circle at center, var(--bg-card), var(--bg-primary));">
+            <div class="code-word-display" id="code-word-display" style="font-size:48px; font-weight:800; font-family:var(--font-mono); letter-spacing:12px; margin-bottom:10px; color:var(--text-primary);">???</div>
+            <div class="code-hint" id="code-hint" style="color:var(--text-muted); font-size:14px; text-transform:uppercase; letter-spacing:2px;">Unscramble the letters</div>
+            <div class="game-start-overlay" id="game-code-start-overlay">
+              <h2>Code Breaker</h2>
+              <p>Unscramble the letters and type the correct word. Mistakes cost lives!</p>
+              <button class="btn btn-primary btn-lg" id="start-code-btn">Start Game</button>
+            </div>
+          </div>
+          <div class="game-input-wrapper"><input type="text" id="game-code-input" class="game-input" placeholder="Type the unscrambled word..." autocomplete="off" spellcheck="false"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRACTICE PAGE -->
+    <section class="page" id="page-practice">
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:8px;">
+        <button class="btn btn-sm btn-ghost nav-link" data-page="home">← Back</button>
+        <h2 class="page-title" style="margin:0;">Practice Mode</h2>
+      </div>
+      <p class="page-desc">Choose a category and practice at your own pace.</p>
+      <div class="practice-categories" id="practice-categories">
+        <div class="practice-cat-card" data-category="quotes">
+          <div class="cat-icon">💬</div>
+          <h3>Famous Quotes</h3>
+          <p>Practice with inspiring quotes from famous people.</p>
+        </div>
+        <div class="practice-cat-card" data-category="code">
+          <div class="cat-icon">💻</div>
+          <h3>Code Snippets</h3>
+          <p>Type real programming code to boost your coding speed.</p>
+        </div>
+        <div class="practice-cat-card" data-category="paragraphs">
+          <div class="cat-icon">📄</div>
+          <h3>Paragraphs</h3>
+          <p>Practice with longer passages and improve endurance.</p>
+        </div>
+        <div class="practice-cat-card" data-category="custom">
+          <div class="cat-icon">✏️</div>
+          <h3>Custom Text</h3>
+          <p>Type your own text for personalized practice.</p>
+        </div>
+      </div>
+      <!-- Active Practice View -->
+      <div class="practice-active hidden" id="practice-active">
+        <div class="lesson-active-header">
+          <button class="btn btn-ghost" id="practice-back">← Back to Categories</button>
+          <h3 id="practice-active-title">Practice</h3>
+        </div>
+        <div class="custom-text-input hidden" id="custom-text-input">
+          <textarea id="custom-textarea" placeholder="Paste or type your custom text here..." rows="4"></textarea>
+          <button class="btn btn-primary" id="start-custom">Start Practice</button>
+        </div>
+        <div class="test-stats-bar">
+          <div class="live-stat"><span class="live-stat-value" id="practice-wpm">0</span><span class="live-stat-label">WPM</span></div>
+          <div class="live-stat"><span class="live-stat-value" id="practice-accuracy">100</span><span class="live-stat-label">Accuracy %</span></div>
+          <div class="live-stat"><span class="live-stat-value" id="practice-progress">0</span><span class="live-stat-label">Progress %</span></div>
+        </div>
+        <div class="typing-area" id="practice-typing-area">
+          <div class="text-display-wrapper">
+            <div class="text-display" id="practice-text-display"></div>
+          </div>
+          <input type="text" id="practice-typing-input" class="typing-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+        </div>
+        <div class="practice-actions">
+          <button class="btn btn-primary" id="practice-next">Next Text →</button>
+          <button class="btn btn-secondary" id="practice-restart">↻ Restart</button>
+        </div>
+        <div class="keyboard-container">
+          <div class="keyboard" id="practice-keyboard"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS PAGE -->
+    <section class="page" id="page-stats">
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;">
+        <button class="btn btn-sm btn-ghost nav-link" data-page="home">← Back</button>
+        <h2 class="page-title" style="margin:0;">Your Statistics</h2>
+      </div>
+      <div class="stats-overview">
+        <div class="stat-card-lg">
+          <div class="stat-card-lg-value" id="stats-best-wpm">0</div>
+          <div class="stat-card-lg-label">Best WPM</div>
+        </div>
+        <div class="stat-card-lg">
+          <div class="stat-card-lg-value" id="stats-avg-wpm">0</div>
+          <div class="stat-card-lg-label">Average WPM</div>
+        </div>
+        <div class="stat-card-lg">
+          <div class="stat-card-lg-value" id="stats-avg-acc">0%</div>
+          <div class="stat-card-lg-label">Average Accuracy</div>
+        </div>
+        <div class="stat-card-lg">
+          <div class="stat-card-lg-value" id="stats-total-tests">0</div>
+          <div class="stat-card-lg-label">Tests Completed</div>
+        </div>
+        <div class="stat-card-lg">
+          <div class="stat-card-lg-value" id="stats-total-time">0m</div>
+          <div class="stat-card-lg-label">Total Practice</div>
+        </div>
+        <div class="stat-card-lg">
+          <div class="stat-card-lg-value" id="stats-total-chars">0</div>
+          <div class="stat-card-lg-label">Characters Typed</div>
+        </div>
+      </div>
+      <h3 style="margin-top:30px; margin-bottom:15px; color:var(--text-muted);">Deep Analysis</h3>
+      <div class="stats-overview">
+        <div class="stat-card-lg">
+          <div class="stat-card-lg-value" id="stats-consistency">0%</div>
+          <div class="stat-card-lg-label">Speed Consistency</div>
+        </div>
+        <div class="stat-card-lg">
+          <div class="stat-card-lg-value" id="stats-typing-style">-</div>
+          <div class="stat-card-lg-label">Typing Profile</div>
+        </div>
+        <div class="stat-card-lg">
+          <div class="stat-card-lg-value" id="stats-missed-keys" style="font-size:24px; color:var(--red); letter-spacing:4px;">-</div>
+          <div class="stat-card-lg-label">Weakest Keys</div>
+        </div>
+      </div>
+      <div class="chart-section" id="stats-heatmap-section">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+          <h3 style="margin:0;">Weakest Keys Heatmap</h3>
+          <span style="font-size:12px; color:var(--text-muted);">Red/orange intensity indicates higher error frequency</span>
+        </div>
+        <div class="keyboard-container" style="margin-top:0;">
+          <div class="keyboard" id="stats-heatmap-keyboard"></div>
+        </div>
+      </div>
+      <div class="chart-section">
+        <h3>WPM History</h3>
+        <canvas id="wpm-chart" width="800" height="250"></canvas>
+      </div>
+      <div class="chart-section">
+        <h3>Accuracy History</h3>
+        <canvas id="accuracy-chart" width="800" height="250"></canvas>
+      </div>
+      <div class="history-section">
+        <h3>Recent Tests</h3>
+        <div class="history-list" id="history-list"></div>
+      </div>
+    </section>
+
+    <section class="page" id="page-settings">
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;">
+        <button class="btn btn-sm btn-ghost nav-link" data-page="home">← Back</button>
+        <h2 class="page-title" style="margin:0;">Settings</h2>
+      </div>
+      <div class="settings-grid">
+        <div class="settings-card">
+          <h3>Appearance</h3>
+          <div class="setting-row">
+            <div class="setting-info"><span class="setting-name">Website Theme</span><span class="setting-desc">Choose your preferred visual style</span></div>
+            <select id="setting-theme-select" class="select-input">
+              <option value="dark">Dark (Default)</option>
+              <option value="light">Light</option>
+            </select>
+          </div>
+          <div class="setting-row">
+            <div class="setting-info"><span class="setting-name">Show Keyboard</span><span class="setting-desc">Display virtual keyboard</span></div>
+            <label class="switch"><input type="checkbox" id="setting-keyboard" checked><span class="slider"></span></label>
+          </div>
+          <div class="setting-row">
+            <div class="setting-info"><span class="setting-name">Font Size</span><span class="setting-desc">Adjust typing text size</span></div>
+            <select id="setting-font-size" class="select-input">
+              <option value="18">Small</option>
+              <option value="22" selected>Medium</option>
+              <option value="28">Large</option>
+              <option value="34">Extra Large</option>
+            </select>
+          </div>
+          <div class="setting-row">
+            <div class="setting-info"><span class="setting-name">Font Family</span><span class="setting-desc">Choose from 20+ professional fonts</span></div>
+            <select id="setting-font-family" class="select-input">
+              <option value="'Fira Code', monospace">Fira Code</option>
+              <option value="'JetBrains Mono', monospace">JetBrains Mono</option>
+              <option value="'Roboto Mono', monospace">Roboto Mono</option>
+              <option value="'Source Code Pro', monospace">Source Code Pro</option>
+              <option value="'Ubuntu Mono', monospace">Ubuntu Mono</option>
+              <option value="'Inconsolata', monospace">Inconsolata</option>
+              <option value="'Space Mono', monospace">Space Mono</option>
+              <option value="'Courier Prime', monospace">Courier Prime</option>
+              <option value="'IBM Plex Mono', monospace">IBM Plex Mono</option>
+              <option value="'VT323', monospace">VT323 (Retro)</option>
+              <option value="'Share Tech Mono', monospace">Share Tech Mono</option>
+              <option value="'Anonymous Pro', monospace">Anonymous Pro</option>
+              <option value="'Cousine', monospace">Cousine</option>
+              <option value="'Cutive Mono', monospace">Cutive Mono</option>
+              <option value="'PT Mono', monospace">PT Mono</option>
+              <option value="'Nova Mono', monospace">Nova Mono</option>
+              <option value="'Syne Mono', monospace">Syne Mono</option>
+              <option value="'Oxygen Mono', monospace">Oxygen Mono</option>
+              <option value="'Overpass Mono', monospace">Overpass Mono</option>
+              <option value="'Red Hat Mono', monospace">Red Hat Mono</option>
+            </select>
+          </div>
+        </div>
+
+
+        <div class="settings-card">
+          <h3>Sound</h3>
+          <div class="setting-row">
+            <div class="setting-info"><span class="setting-name">Key Sounds</span><span class="setting-desc">Play sound on keypress</span></div>
+            <label class="switch"><input type="checkbox" id="setting-sound"><span class="slider"></span></label>
+          </div>
+          <div class="setting-row">
+            <div class="setting-info"><span class="setting-name">Sound Profile</span><span class="setting-desc">Choose from 20 realistic sounds</span></div>
+            <select id="setting-sound-profile" class="select-input">
+              <option value="mech_red">Cherry MX Red</option>
+              <option value="mech_blue">Cherry MX Blue</option>
+              <option value="mech_brown">Cherry MX Brown</option>
+              <option value="holy_panda">Holy Panda (Thock)</option>
+              <option value="topre">Topre (Rubber Dome)</option>
+              <option value="typewriter">Vintage Typewriter</option>
+              <option value="macbook">Macbook Butterfly</option>
+              <option value="membrane">Membrane Office</option>
+              <option value="laser">Sci-Fi Laser</option>
+              <option value="bubble">Popping Bubbles</option>
+              <option value="clicky">Sharp Click</option>
+              <option value="thock">Deep Thock</option>
+              <option value="clack">Loud Clack</option>
+              <option value="ping">Metallic Ping</option>
+              <option value="wood">Wooden Block</option>
+              <option value="glass">Glass Tap</option>
+              <option value="soft">Soft Pillow</option>
+              <option value="retro">8-Bit Retro</option>
+              <option value="bell">Tiny Bell</option>
+              <option value="snap">Finger Snap</option>
+            </select>
+          </div>
+          <div class="setting-row">
+            <div class="setting-info"><span class="setting-name">Error Sound</span><span class="setting-desc">Play sound on typing errors</span></div>
+            <label class="switch"><input type="checkbox" id="setting-error-sound" checked><span class="slider"></span></label>
+          </div>
+        </div>
+        <div class="settings-card">
+          <h3>Typing</h3>
+          <div class="setting-row">
+            <div class="setting-info"><span class="setting-name">Smooth Caret</span><span class="setting-desc">Animate caret movement</span></div>
+            <label class="switch"><input type="checkbox" id="setting-smooth-caret" checked><span class="slider"></span></label>
+          </div>
+          <div class="setting-row">
+            <div class="setting-info"><span class="setting-name">Show Live WPM</span><span class="setting-desc">Display real-time WPM while typing</span></div>
+            <label class="switch"><input type="checkbox" id="setting-live-wpm" checked><span class="slider"></span></label>
+          </div>
+          <div class="setting-row">
+            <div class="setting-info"><span class="setting-name">Caret Style</span><span class="setting-desc">Choose your typing cursor appearance</span></div>
+            <select id="setting-caret-style" class="select-input">
+              <option value="line">Line (Default)</option>
+              <option value="block">Block</option>
+              <option value="underline">Underline</option>
+              <option value="hidden">Hidden</option>
+            </select>
+          </div>
+        </div>
+        <div class="settings-card danger-card">
+          <h3>Data</h3>
+          <div class="setting-row">
+            <div class="setting-info"><span class="setting-name">Reset All Statistics</span><span class="setting-desc">Clear all your typing history and progress</span></div>
+            <button class="btn btn-danger" id="reset-stats">Reset</button>
+          </div>
+          <div class="setting-row">
+            <div class="setting-info"><span class="setting-name">Export Data</span><span class="setting-desc">Download your stats as JSON</span></div>
+            <button class="btn btn-secondary" id="export-data">Export</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Results Modal -->
+  <div class="modal-overlay hidden" id="results-modal">
+    <div class="modal-content">
+      <button class="modal-close" id="modal-close">&times;</button>
+      <h2 class="modal-title">Test Complete! 🎉</h2>
+      <div class="results-grid">
+        <div class="result-item primary">
+          <div class="result-value" id="result-wpm">0</div>
+          <div class="result-label">WPM</div>
+        </div>
+        <div class="result-item">
+          <div class="result-value" id="result-accuracy">0%</div>
+          <div class="result-label">Accuracy</div>
+        </div>
+        <div class="result-item">
+          <div class="result-value" id="result-correct">0</div>
+          <div class="result-label">Correct</div>
+        </div>
+        <div class="result-item">
+          <div class="result-value" id="result-errors">0</div>
+          <div class="result-label">Errors</div>
+        </div>
+        <div class="result-item">
+          <div class="result-value" id="result-raw">0</div>
+          <div class="result-label">Raw WPM</div>
+        </div>
+        <div class="result-item">
+          <div class="result-value" id="result-chars">0</div>
+          <div class="result-label">Characters</div>
+        </div>
+      </div>
+      <div class="result-rank" id="result-rank"></div>
+      <div class="modal-actions">
+        <button class="btn btn-primary" id="result-retry">Try Again</button>
+        <button class="btn btn-secondary" id="result-close">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Leaderboard section (added to stats page via JS) -->
+  <section class="page" id="page-leaderboard">
+    <div style="display:flex;align-items:center;gap:16px;margin-bottom:8px;">
+      <button class="btn btn-sm btn-ghost nav-link" data-page="home">← Back</button>
+      <h2 class="page-title" style="margin:0;">Leaderboard</h2>
+    </div>
+    <p class="page-desc">See how you rank against other typists worldwide.</p>
+    <div class="leaderboard-container">
+      <table class="leaderboard-table">
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Typist</th>
+            <th>Best WPM</th>
+            <th>Accuracy</th>
+            <th>Tests Taken</th>
+          </tr>
+        </thead>
+        <tbody id="leaderboard-body">
+          <tr><td colspan="5" style="text-align:center;padding:20px;color:var(--text-muted)">Loading leaderboard...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- INSIGHTS PAGE (Visitor Analytics) -->
+  <section class="page" id="page-insights">
+    <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;">
+      <button class="btn btn-sm btn-ghost nav-link" data-page="home">← Back</button>
+      <h2 class="page-title" style="margin:0;">Site Insights</h2>
+    </div>
+    <div class="stats-overview">
+      <div class="stat-card-lg">
+        <div class="stat-card-lg-value" id="insight-total-visits">0</div>
+        <div class="stat-card-lg-label">Total Visits</div>
+      </div>
+      <div class="stat-card-lg">
+        <div class="stat-card-lg-value" id="insight-unique-visitors">0</div>
+        <div class="stat-card-lg-label">Unique Visitors</div>
+      </div>
+      <div class="stat-card-lg">
+        <div class="stat-card-lg-value" id="insight-avg-sessions">0</div>
+        <div class="stat-card-lg-label">Avg. per Day</div>
+      </div>
+    </div>
+    
+    <div class="chart-section">
+      <h3>Traffic Over Time (Last 14 Days)</h3>
+      <canvas id="traffic-chart" width="800" height="250"></canvas>
+    </div>
+
+    <div style="display:grid;grid-template-columns: 1fr 1fr; gap: 20px;">
+      <div class="history-section">
+        <h3>Recent Visitors</h3>
+        <div class="history-list" id="insight-recent-list"></div>
+      </div>
+      <div class="history-section">
+        <h3>Top Browsers</h3>
+        <div class="history-list" id="insight-browser-list"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROFILE PAGE -->
+  <section class="page" id="page-profile">
+    <div style="display:flex;align-items:center;gap:16px;max-width:600px;margin:0 auto 8px auto;">
+      <button class="btn btn-sm btn-ghost nav-link" data-page="home">← Back</button>
+      <h2 class="page-title" style="margin:0;">Your Profile</h2>
+    </div>
+    <div class="profile-container" style="max-width:600px;margin:20px auto 0 auto;background:var(--bg-card);padding:24px;border-radius:var(--radius);border:1px solid var(--border);">
+      <form id="profile-form" class="auth-form">
+        <div style="display:flex;flex-direction:column;align-items:center;margin-bottom:20px;">
+          <div id="profile-avatar-preview" class="user-avatar" style="width:100px;height:100px;font-size:36px;margin-bottom:12px;background-size:cover;background-position:center;">U</div>
+          <label class="btn btn-sm btn-secondary" style="cursor:pointer;">
+            Change Photo
+            <input type="file" id="profile-avatar-upload" accept="image/*" style="display:none;">
+          </label>
+        </div>
+        <div class="form-group">
+          <label>Display Name</label>
+          <input type="text" id="profile-displayname" required>
+        </div>
+        <div class="form-group">
+          <label>Bio</label>
+          <textarea id="profile-bio" rows="3" placeholder="Tell us about yourself..." style="padding:10px 14px;border-radius:var(--radius-sm);background:var(--bg-elevated);color:var(--text-primary);border:1px solid var(--border);font-family:var(--font-ui);font-size:14px;resize:vertical;"></textarea>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px;">
+          <div class="form-group">
+            <label>Typing Experience</label>
+            <select id="profile-experience" style="padding:10px;border-radius:var(--radius-sm);background:var(--bg-elevated);color:var(--text-primary);border:1px solid var(--border);">
+              <option value="">Select level...</option>
+              <option value="Beginner">Beginner (<40 WPM)</option>
+              <option value="Intermediate">Intermediate (40-70 WPM)</option>
+              <option value="Advanced">Advanced (70-100 WPM)</option>
+              <option value="Professional">Professional (100+ WPM)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Keyboard Layout</label>
+            <select id="profile-layout" style="padding:10px;border-radius:var(--radius-sm);background:var(--bg-elevated);color:var(--text-primary);border:1px solid var(--border);">
+              <option value="">Select layout...</option>
+              <option value="QWERTY">QWERTY</option>
+              <option value="Dvorak">Dvorak</option>
+              <option value="Colemak">Colemak</option>
+              <option value="Workman">Workman</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px;">
+          <div class="form-group">
+            <label>Favorite Keyboard</label>
+            <input type="text" id="profile-kb-model" placeholder="e.g. Wooting 60HE, Keychron Q1">
+          </div>
+          <div class="form-group">
+            <label>Favorite Switches</label>
+            <input type="text" id="profile-kb-switches" placeholder="e.g. Cherry MX Red, Holy Panda">
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary" style="margin-top:10px;">Save Profile</button>
+      </form>
+    </div>
+  </section>
+  <!-- Toast notification -->
+  <div class="toast hidden" id="toast"><span id="toast-msg"></span></div>
+
+  <script src="data.js"></script>
+  <script src="auth.js"></script>
+  <script src="app.js"></script>
+
+  <!-- PWA: Service Worker Registration -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js')
+          .then(reg => {
+            console.log('[PWA] Service Worker registered, scope:', reg.scope);
+
+            // Listen for updates
+            reg.addEventListener('updatefound', () => {
+              const newWorker = reg.installing;
+              newWorker.addEventListener('statechange', () => {
+                if (newWorker.state === 'activated' && navigator.serviceWorker.controller) {
+                  // New version available
+                  const toast = document.getElementById('toast');
+                  const toastMsg = document.getElementById('toast-msg');
+                  if (toast && toastMsg) {
+                    toastMsg.textContent = '✨ App updated! Refresh for the latest version.';
+                    toast.classList.remove('hidden');
+                    setTimeout(() => toast.classList.add('hidden'), 5000);
+                  }
+                }
+              });
+            });
+          })
+          .catch(err => console.error('[PWA] SW registration failed:', err));
+      });
+
+      // Handle PWA install prompt
+      let deferredPrompt;
+      window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        console.log('[PWA] Install prompt available');
+
+        // Show install button in nav
+        const installBtn = document.getElementById('pwa-install-btn');
+        if (installBtn) {
+          installBtn.classList.remove('hidden');
+          installBtn.addEventListener('click', async () => {
+            if (deferredPrompt) {
+              deferredPrompt.prompt();
+              const { outcome } = await deferredPrompt.userChoice;
+              console.log('[PWA] Install outcome:', outcome);
+              deferredPrompt = null;
+              installBtn.classList.add('hidden');
+            }
+          });
+        }
+      });
+
+      window.addEventListener('appinstalled', () => {
+        console.log('[PWA] App installed successfully');
+        deferredPrompt = null;
+        const installBtn = document.getElementById('pwa-install-btn');
+        if (installBtn) installBtn.classList.add('hidden');
+      });
+    }
+  </script>
+</body>
+</html>

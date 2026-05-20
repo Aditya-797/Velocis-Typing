@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: velocis-typing
+    env: node
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: SESSION_SECRET
+        generateValue: true
+    disk:
+      name: sqlite-data
+      mountPath: /data
+      sizeGB: 1
