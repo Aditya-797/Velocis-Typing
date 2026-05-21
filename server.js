@@ -233,6 +233,17 @@ function logSecurity(event, req, userId = null, details = '') {
 app.use(express.json({ limit: '1mb' }));
 app.use(express.urlencoded({ extended: false, limit: '1mb' }));
 
+// Log site visits
+app.use((req, res, next) => {
+  if (req.method === 'GET' && (req.path === '/' || req.path === '/index.html')) {
+    try {
+      dbRun('INSERT INTO site_visits (user_id, ip, user_agent, path) VALUES (?, ?, ?, ?)',
+        [null, req.ip || 'unknown', req.get('user-agent') || 'unknown', req.path]);
+    } catch (e) { /* don't crash on logging failure */ }
+  }
+  next();
+});
+
 // Serve static files (BEFORE session to avoid unnecessary session creation)
 app.use(express.static(__dirname, {
   dotfiles: 'deny',  // Block access to .env, .git, etc.
@@ -671,6 +682,62 @@ app.get('/api/stats', apiLimiter, (req, res) => {
 app.get('/api/leaderboard', apiLimiter, (req, res) => {
   const leaders = dbAll(`SELECT u.username, u.display_name, u.avatar, MAX(t.wpm) as best_wpm, ROUND(AVG(t.accuracy)) as avg_accuracy, COUNT(t.id) as total_tests FROM users u JOIN test_results t ON u.id = t.user_id GROUP BY u.id ORDER BY best_wpm DESC LIMIT 20`);
   res.json({ leaders });
+});
+
+app.get('/api/admin/stats', apiLimiter, (req, res) => {
+  const uid = req.session.userId || (req.user ? req.user.id : null);
+  if (!uid) return res.status(401).json({ error: 'Unauthorized' });
+
+  const user = dbGet('SELECT is_admin FROM users WHERE id = ?', [uid]);
+  if (!user || !user.is_admin) {
+    return res.status(403).json({ error: 'Forbidden' });
+  }
+
+  try {
+    const totalVisitsRow = dbGet('SELECT COUNT(*) as count FROM site_visits');
+    const uniqueVisitorsRow = dbGet('SELECT COUNT(DISTINCT ip) as count FROM site_visits');
+
+    // Chronological history over last 14 days
+    const historyMap = {};
+    for (let i = 13; i >= 0; i--) {
+      const d = new Date();
+      d.setDate(d.getDate() - i);
+      const dateStr = d.toISOString().split('T')[0];
+      historyMap[dateStr] = 0;
+    }
+
+    const historyRows = dbAll(`
+      SELECT DATE(created_at) as date, COUNT(*) as count 
+      FROM site_visits 
+      WHERE created_at >= DATE('now', '-13 days') 
+      GROUP BY DATE(created_at)
+    `);
+
+    historyRows.forEach(row => {
+      if (historyMap[row.date] !== undefined) {
+        historyMap[row.date] = row.count;
+      }
+    });
+
+    const history = Object.keys(historyMap).sort().map(date => ({
+      date,
+      count: historyMap[date]
+    }));
+
+    const recentVisits = dbAll('SELECT ip, created_at FROM site_visits ORDER BY created_at DESC LIMIT 10');
+    const browsers = dbAll('SELECT user_agent, COUNT(*) as count FROM site_visits GROUP BY user_agent ORDER BY count DESC');
+
+    res.json({
+      totalVisits: totalVisitsRow ? totalVisitsRow.count : 0,
+      uniqueVisitors: uniqueVisitorsRow ? uniqueVisitorsRow.count : 0,
+      history,
+      recentVisits,
+      browsers
+    });
+  } catch (err) {
+    console.error('Error generating admin stats:', err.message);
+    res.status(500).json({ error: 'Internal server error' });
+  }
 });
 
 // ══════════════════════════════════════════════════════════════

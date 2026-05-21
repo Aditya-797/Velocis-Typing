@@ -49,6 +49,9 @@ self.addEventListener('fetch', event => {
   // Skip non-GET requests
   if (event.request.method !== 'GET') return;
 
+  // Skip social auth routes (let browser handle redirects natively to prevent net::ERR_FAILED)
+  if (url.pathname.startsWith('/auth/')) return;
+
   // API calls: network-first with no cache fallback
   if (url.pathname.startsWith('/api/')) {
     event.respondWith(
